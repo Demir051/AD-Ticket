@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head') %>
+
+<body class="bg-gray-100 font-sans">
+
+    <div class="flex h-screen">
+
+        <!-- Sidebar -->
+        <%- include('../partials/admin-sidebar')  %>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-6 flex flex-col items-center justify-center">
+            <!-- Content goes here -->
+            <h2 class="text-2xl font-semibold mb-6">Add Admin</h2>
+
+            <!-- Bilet Ekleme Formu -->
+            <form class="w-1/2 mb-8" method="post">
+                <div class="mb-4">
+                    <label for="userName" class="block text-sm font-medium text-gray-600">Account Name</label>
+                    <input type="text" id="userName" name="userName" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
+                    <input type="text" id="password" name="password" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+
+                <button
+                    class="hidden select-none rounded-lg bg-gradient-to-tr from-gray-600 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+                    type="submit">
+                    <span>Add Admin</span>
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

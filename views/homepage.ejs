@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head')  %>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <%- include('./partials/navbar')  %>
+
+    <!-- Content -->
+    <div class="mx-auto mt-8">
+        <!-- Bilet Alma Formu -->
+        <div class="w-1/2 mx-auto p-4 rounded">
+            
+            <form method="post">
+                <!-- Kalkış -->
+                <div class="mb-4">
+                    <label for="departure" class="block text-gray-700 font-semibold">Kalkış</label>
+                    <select class="block w-full p-2 border border-gray-300 rounded mt-1" id="departure" name="departure">
+                        <% tickets.forEach(ticket => { %>
+                            <option value="<%= ticket.departure %>"><%= ticket.departure %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <!-- Varış -->
+                <div class="mb-4">
+                    <label for="destination" class="block text-gray-700 font-semibold">Varış</label>
+                    <select class="block w-full p-2 border border-gray-300 rounded mt-1" id="destination" name="destination">
+                        <% tickets.forEach(ticket => { %>
+                        <option value="<%= ticket.destination %>"><%= ticket.destination %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <!-- Tarih -->
+                <div class="mb-4">
+                    <label for="tarih" class="block text-gray-700 font-semibold">Tarih</label>
+                    <input type="date" id="date" name="date" class="w-full p-2 border border-gray-300 rounded mt-1">
+                </div>
+                <!-- Gönder Butonu -->
+                <div>
+                    <button
+                        class="hidden select-none rounded-lg bg-gradient-to-tr from-gray-600 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+                        type="submit">
+                        <span>Look Tickets</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="mt-8 w-1/2 mx-auto my-auto p-4">
+            <h3 class="text-xl font-semibold mb-4 font-semibold">Firmamız Hakkında</h3>
+            <p class="text-gray-700">AD-Ticket, uzun yıllardır müşterilerine kaliteli ve güvenilir seyahat imkanı
+                sunan bir otobüs firmasıdır. Sizlere konforlu ve güvenli bir seyahat deneyimi yaşatmak için
+                buradayız. Hemen biletinizi alın ve keyifli bir yolculuğa başlayın!</p>
+        </div>
+        <div class="py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <h2 class="text-center text-lg font-semibold leading-8 text-gray-900">Dünyanın en yenilikçi
+                    ekiplerinin güvendiği</h2>
+                <div
+                    class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                        src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg" alt="Transistor"
+                        width="158" height="48">
+                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                        src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg" alt="Reform" width="158"
+                        height="48">
+                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                        src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg" alt="Tuple" width="158"
+                        height="48">
+                    <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
+                        src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg" alt="SavvyCal"
+                        width="158" height="48">
+                    <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
+                        src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg" alt="Statamic"
+                        width="158" height="48">
+                </div>
+            </div>
+        </div>
+          <div class="py-12 sm:py-16 flex flex-col items-center">
+              <h2 class="text-3xl font-semibold mb-8">Frequently Asked Questions</h2>
+
+              <!-- FAQ Items -->
+              <div class="space-y-4 w-full max-w-lg">
+                  <!-- FAQ Item 1 -->
+                  <div class="border-b pb-4">
+                      <h3 class="text-xl font-medium">How do I get started?</h3>
+                      <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                  </div>
+
+                  <!-- FAQ Item 2 -->
+                  <div class="border-b pb-4">
+                      <h3 class="text-xl font-medium">Can I cancel my subscription?</h3>
+                      <p class="text-gray-600">Nulla facilisi. Aenean euismod elementum nisi, vel fermentum urna...</p>
+                  </div>
+
+                  <!-- FAQ Item 3 -->
+                  <div class="border-b pb-4">
+                      <h3 class="text-xl font-medium">What payment methods do you accept?</h3>
+                      <p class="text-gray-600">Pellentesque habitant morbi tristique senectus et netus et malesuada
+                          fames...</p>
+                  </div>
+
+                  <!-- Add more FAQ items as needed -->
+
+              </div>
+          </div>
+
+          
+
+    </div>
+      
+    <%- include('./partials/footer')  %>
+</body>
+
+</html>

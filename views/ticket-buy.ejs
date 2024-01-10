@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head')  %>
+
+ <style>
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+        background-color: #696666 !important;
+}
+ </style>
+
+<body class="bg-gray-100">
+
+    <%- include('./partials/navbar')  %>
+
+    <div class="container mx-auto mt-10 flex justify-center items-start">
+
+        <div class="w-1/4 p-4 bg-white shadow-lg rounded-lg mr-4">
+            <h2 class="text-lg font-semibold mb-2">Ticket Info</h2>
+            <p class="font-medium"><%= ticket.departure %> - <%= ticket.destination %></p>
+            <p><span class="font-medium">Company Name : </span><%= ticket.companyName %></p>
+            <p><span class="font-medium">Date : </span><%= formatDate(ticket.date) %></p>
+            <p><span class="font-medium">Price : </span><%= ticket.price %> $</p>
+
+        </div>
+         
+            <div class="w-1/3 p-4 bg-white shadow-lg rounded-lg" style="border: 2px solid black;">
+                <h1 class="text-2xl font-semibold mb-4">Customer Information</h1>
+
+                <% if (error != null) { %>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-3" role="alert">
+                        <span class="block sm:inline"><%= error %></span>
+                    </div>
+                <% } %>
+
+                <form method="post">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-600">Name Surname :</label>
+                        <input type="text" id="name" name="name" required class="w-full border border-gray-300 p-2 rounded" placeholder="Eric Daniel">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-600 ">E-mail :</label>
+                        <input type="email" id="email" name="email" required class="w-full border border-gray-300 p-2 rounded" placeholder="example@example.com">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="phone" class="block text-gray-600">Phone Number :</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full border border-gray-300 p-2 rounded" placeholder="+90">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="tcKimlik" class="block text-gray-600">Identification Number :</label>
+                        <input type="number" id="tc" name="tc" required class="w-full border border-gray-300 p-2 rounded">
+                    </div>
+
+                    <!-- Input Number -->
+                    <div class="mb-4">
+                        <label for="quantity" class="block text-gray-600">Quantity :</label>
+                        <div class="relative rounded-md shadow-sm">
+                            <input type="number" id="quantity" name="quantity" min="1" max="<%= ticket.passengerCount %>" class="form-input py-2 px-3 block w-full leading-5 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5 border border-gray-300">
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+
+                    <div class="mb-4">
+                        <button
+                                class="hidden select-none rounded-lg bg-gradient-to-tr from-gray-600 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+                                type="submit">
+                                <span>Save Information</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        
+    </div>
+
+    <%- include('./partials/footer')  %>
+
+</body>
+
+</html>

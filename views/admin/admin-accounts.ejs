@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head') %>
+
+<style>
+    /* Tailwind CSS ile ilgili stilleri buraya ekleyebilirsiniz */
+    table th {
+        width: 150px;
+    }
+
+    table th:nth-last-child(-n+2),
+    table td:nth-last-child(-n+2) {
+        width: 50px;
+    }
+
+    .table-container {
+        overflow-x: hidden;
+    }
+</style>
+
+<body class="bg-gray-100 font-sans">
+
+    <div class="flex h-screen">
+
+        <!-- Sidebar -->
+        <%- include('../partials/admin-sidebar')  %>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-6 flex flex-col items-center justify-center">
+            <!-- Content goes here -->
+            <h2 class="text-2xl font-semibold mb-6">Admin Accounts</h2>
+
+            <div
+                class="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
+                <div class="table-container">
+                    <table class="w-full text-left table-auto min-w-max">
+                        <thead>
+                            <tr>
+                                <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                        Account Name
+                                    </p>
+                                </th>
+                                <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                        Password
+                                    </p>
+                                </th>
+                                <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    </p>
+                                </th>
+                                <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                                    <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    </p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% admins.forEach(admin => { %>
+                                <tr>
+                                    <td class="p-4 border-b border-blue-gray-50">
+                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                            <%= admin.userName %>
+                                        </p>
+                                    </td>
+                                    <td class="p-4 border-b border-blue-gray-50">
+                                        <div class="relative">
+                                            <input type="password" class="password-text block w-full font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                                                value="************" disabled>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 border-b border-blue-gray-50">
+                                        <a href="#" class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                                            <a href="/adminpanel/delete-admin/<%= admin._id %>"
+                                                class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                                                Delete
+                                            </a>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

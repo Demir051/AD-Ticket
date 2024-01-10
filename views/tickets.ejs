@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head')  %>
+
+<body class="bg-gray-100">
+
+    <%- include('./partials/navbar')  %>
+
+    <div class="container mx-auto mt-8 p-6">
+        <h1 class="text-3xl font-bold mb-4"><%= title %></h1>
+
+        <% if (tickets.length > 0) { %>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <% tickets.forEach(ticket => { %>
+                    <div class="bg-white p-6 rounded shadow-md">
+                        <h2 class="text-xl font-bold mb-2"><%= ticket.companyName%></h2>
+                        <% 
+                            const dateObject = new Date(ticket.date);
+                            const date = dateObject.toLocaleDateString('en-US');
+                            const time = dateObject.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false });
+
+                        %>
+                        <p class="text-gray-600 mb-2">Date : <%= date %></p>
+                        <p class="text-gray-600 mb-2">Time : <%= time %></p>
+                        <p class="text-gray-600 mb-2">Last Ticket Count : <%= ticket.passengerCount %></p>
+                        <p class="text-gray-600 mb-4">Price : <%= ticket.price  %> $</p>
+                        <form method="post">
+                            <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+                             <button
+                                class="hidden select-none rounded-lg bg-gradient-to-tr from-gray-600 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+                                type="submit">
+                                <span>Buy Now</span>
+                            </button>
+                        </form>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p class="text-gray-600">Hiç bilet bulunamadı.</p>
+        <% } %>
+
+    </div>
+
+
+    <%- include('./partials/footer')  %>
+
+</body>
+
+</html>

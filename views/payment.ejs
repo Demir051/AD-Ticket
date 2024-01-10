@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head')  %>
+
+<body class="bg-gray-100 min-h-screen">
+
+    <%- include('./partials/navbar')  %>
+
+   <div class="container mx-auto mt-10 flex flex-col md:flex-row items-center w-full">
+    <!-- Sol taraf (Ticket Info ve User Info) -->
+    <div class="w-full p-4 rounded-lg mb-4 md:mr-4">
+        <div class="p-4 bg-white shadow-lg rounded-lg mb-4 ml-auto" style="width: 70%">
+            <h2 class="text-lg font-semibold mb-2">Ticket Info</h2>
+            <p class="font-medium"><%= ticket.departure %> - <%= ticket.destination %></p>
+            <p><span class="font-medium">Company Name : </span><%= ticket.companyName %></p>
+            <p><span class="font-medium">Date : </span><%= formatDate(ticket.date) %></p>
+            <p><span class="font-medium">Price : </span><%= ticket.price %> $</p>
+        </div>
+
+        <div class="p-4 bg-white shadow-lg rounded-lg ml-auto" style="width: 70%">
+            <h2 class="text-lg font-semibold mb-2">User Info</h2>
+            <p class="font-medium"><span class="font-medium">Name : </span><%= name %></p>
+            <p><span class="font-medium">Phone Number : </span><%= phone %></p>
+            <p><span class="font-medium">Email: </span><%= email %></p>
+            <p><span class="font-medium">Identification Number : </span><%= tc %></p>
+            <p><span class="font-medium">Quantity : </span><%= quantity %></p>
+        </div>
+    </div>
+
+    <!-- Sağ taraf (Payment) -->
+    <div class="w-full p-4 rounded-lg mb-4 md:mr-4" style="height: 400px;" >
+        <div class="w-1/2 h-1/2 p-4 bg-white shadow-lg rounded-lg mr-auto" style="width: 70%; height: 100%; border: 2px solid black;">
+            <h2 class="text-lg font-semibold mb-2">Payment</h2>
+            <!-- Ödeme Formu -->
+            <form method="post">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-600 font-medium">Name on Card</label>
+                <input type="text" id="name" name="cardName" placeholder="John Doe" class="mt-1 p-2 w-full border rounded-md" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="cardNumber" class="block text-gray-600 font-medium">Card Number</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" class="mt-1 p-2 w-full border rounded-md" required>
+            </div>
+
+            <div class="flex mb-4">
+                <div class="w-1/2 mr-2">
+                    <label for="expirationDate" class="block text-gray-600 font-medium">Expiration Date</label>
+                    <input type="text" id="expirationDate" name="expirationDate" placeholder="MM/YY" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+                <div class="w-1/2 ml-2">
+                    <label for="cvv" class="block text-gray-600 font-medium">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+            </div>
+
+            <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+            <input type="hidden" name="username" value="<%= name %>">
+            <input type="hidden" name="phone" value="<%= phone %>">
+            <input type="hidden" name="tc" value="<%= tc %>">
+            <input type="hidden" name="quantity" value="<%= quantity %>">
+            <input type="hidden" name="email" value="<%= email %>">
+
+
+            <button
+                class="hidden select-none rounded-lg bg-gradient-to-tr from-gray-600 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+                type="submit">
+                <% 
+                    const price = ticket.price * quantity;
+                %>
+                <span><%= price %> $ Pay</span>
+            </button>
+        </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+    
+
+    <%- include('./partials/footer')  %>
+
+</body>
+
+</html>
