@@ -6,7 +6,6 @@ AD Ticket , seyahat planlarınızı kolayca yönetebileceğiniz ve otobüs bilet
 # Baslatmadan Once Yapilacaklar
 
 1. Ana dizine `.env` dosyasi olusturun
-   Dosyanin icine bu datalari girin
    ```sh
    PORT=PORT_NUMBER
 
